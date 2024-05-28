@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t ssrikanth/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t ssrikanth98/react-test -f ./client/Dockerfile.dev ./client
 
 scripts:
-  - docker run -e CI=true ssrikanth/react-test npm test
+  - docker run -e CI=true ssrikanth98/react-test npm test
 
 after_success:
-  - docker build -t ssrikanth/multi-client ./client
-  - docker build -t ssrikanth/multi-client-nginx ./nginx
-  - docker build -t ssrikanth/multi-client-server ./server
-  - docker build -t ssrikanth/multi-client-worker ./worker
+  - docker build -t ssrikanth98/multi-client ./client
+  - docker build -t ssrikanth98/multi-client-nginx ./nginx
+  - docker build -t ssrikanth98/multi-client-server ./server
+  - docker build -t ssrikanth98/multi-client-worker ./worker
   #Login Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #Push images
-  - docker push ssrikanth/multi-client
-  - docker push ssrikanth/multi-client-nginx
-  - docker push ssrikanth/multi-client-server
-  - docker push ssrikanth/multi-client-worker
+  - docker push ssrikanth98/multi-client
+  - docker push ssrikanth98/multi-client-nginx
+  - docker push ssrikanth98/multi-client-server
+  - docker push ssrikanth98/multi-client-worker
