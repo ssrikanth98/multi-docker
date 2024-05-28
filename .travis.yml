@@ -13,3 +13,10 @@ after_success:
   - docker run -t ssrikanth/multi-client-nginx ./nginx
   - docker run -t ssrikanth/multi-client-server ./server
   - docker run -t ssrikanth/multi-client-worker ./worker
+  #Login Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  #Push images
+  - docker push ssrikanth/multi-client
+  - docker push ssrikanth/multi-client-nginx
+  - docker push ssrikanth/multi-client-server
+  - docker push ssrikanth/multi-client-worker
